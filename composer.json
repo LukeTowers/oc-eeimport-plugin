@@ -1,7 +1,7 @@
 {
     "name": "luketowers/oc-eeimport-plugin",
     "type": "october-plugin",
-    "description": "Tool to assist in importing ExpressionEngine databases to OctoberCMS",
+    "description": "Tool for working with ExpressionEngine databases in OctoberCMS",
     "homepage": "https://github.com/LukeTowers/oc-eeimport-plugin",
     "keywords": ["october", "octobercms", "laravel", "expression engine", "expressionengine",  "ee", "import"],
     "license": "MIT",
