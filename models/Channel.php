@@ -35,7 +35,7 @@ class Channel extends BaseModel
      * @param string $name
      * @return Channel
      */
-    public function fromName($name)
+    public static function fromName($name)
     {
         return static::name($name)->first();
     }

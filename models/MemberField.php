@@ -43,6 +43,6 @@ class MemberField extends BaseModel
      */
     public static function getFieldNames()
     {
-        return Db::connection('db_ee_nas')->table('member_fields')->pluck('m_field_name');
+        return Db::connection(Config::get('luketowers.eeimport::default_ee_connection'))->table('member_fields')->pluck('m_field_name');
     }
 }

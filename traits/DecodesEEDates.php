@@ -53,7 +53,7 @@ trait DecodesEEDates
             if ($length === 14) {
                 $return = Carbon::createFromFormat('YmdHis', $value);
             } else {
-                $return = Carbon::parse($timestamp);
+                $return = (new Carbon)->setTimestamp($value);
             }
         }
 

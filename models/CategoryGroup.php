@@ -23,4 +23,16 @@ class CategoryGroup extends BaseModel
     public $hasMany = [
         'categories' => [Category::class, 'key' => 'group_id'],
     ];
+
+    /**
+     * Filter the query by the provided name
+     *
+     * @param QueryBuilder $query
+     * @param string $name
+     * @return QueryBuilder
+     */
+    public function scopeName($query, $name)
+    {
+        return $query->where('group_name', $name);
+    }
 }
