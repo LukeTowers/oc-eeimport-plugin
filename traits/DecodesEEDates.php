@@ -68,4 +68,18 @@ trait DecodesEEDates
     {
         return $this->eeDates;
     }
+
+    /**
+     * Adds an attribute to the eeDates attributes list
+     * @param  array|string|null  $attributes
+     * @return $this
+     */
+    public function addEEDates($attributes = null)
+    {
+        $attributes = is_array($attributes) ? $attributes : func_get_args();
+
+        $this->eeDates = array_merge($this->eeDates, $attributes);
+
+        return $this;
+    }
 }

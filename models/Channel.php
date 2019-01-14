@@ -51,4 +51,16 @@ class Channel extends BaseModel
     {
         return $query->where('channel_name', $name);
     }
+
+    /**
+     * Filter the query by the provided names
+     *
+     * @param QueryBuilder $query
+     * @param array $names
+     * @return QueryBuilder
+     */
+    public function scopeNames($query, $names)
+    {
+        return $query->whereIn('channel_name', $names);
+    }
 }

@@ -65,4 +65,18 @@ trait DecodesEEData
     {
         return $this->eeEncodedAttributes;
     }
+
+    /**
+     * Adds an attribute to the eeEncodedAttributes attributes list
+     * @param  array|string|null  $attributes
+     * @return $this
+     */
+    public function addEEEncodedAttributes($attributes = null)
+    {
+        $attributes = is_array($attributes) ? $attributes : func_get_args();
+
+        $this->eeEncodedAttributes = array_merge($this->eeEncodedAttributes, $attributes);
+
+        return $this;
+    }
 }
