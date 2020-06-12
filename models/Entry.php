@@ -82,13 +82,7 @@ class Entry extends BaseModel
      */
     protected function getFieldValue($field)
     {
-        $value = null;
-        $fieldId = EntryField::getIdForName($field);
-        if (!empty($fieldId)) {
-            $key = 'field_id_' . $fieldId;
-            $value = $this->data->{$key};
-        }
-
-        return $value;
+        $fieldObj = $this->channel->fields()->where('field_name', $field)->first();
+        return $fieldObj->getValueFromEntry($this);
     }
 }

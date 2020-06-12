@@ -22,12 +22,26 @@ class Channel extends BaseModel
      */
     public $hasMany = [
         'entries'  => [Entry::class, 'key' => 'channel_id'],
-        'fields'   => [EntryField::class, 'key' => 'group_id', 'otherKey' => 'field_group'],
         'comments' => [Comment::class, 'key' => 'channel_id'],
     ];
     public $belongsToMany = [
         'member_groups' => [MemberGroup::class, 'table' => 'channel_member_groups', 'key' => 'channel_id', 'otherKey' => 'group_id'],
+        'field_groups' => [FieldGroup::class, 'table' => 'channels_channel_field_groups', 'key' => 'channel_id', 'otherKey' => 'group_id'],
     ];
+
+    /**
+     * Get the channel's fields
+     *
+     * @return QueryBuilder
+     */
+    public function fields()
+    {
+        $fieldIds = [];
+        foreach ($this->field_groups as $group) {
+            $fieldIds = array_merge($fieldIds, $group->fields->pluck('field_id')->all());
+        }
+        return EntryField::whereIn('field_id', $fieldIds);
+    }
 
     /**
      * Get the channel with the provided name
